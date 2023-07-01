@@ -1,15 +1,10 @@
 version: 0.0
 os: windows
 files:
-  - source: /
+  - source: .
     destination: C:\WebApiFolder
 hooks:
   BeforeInstall:
-    - location: scripts\before-install.ps1
+    - location: scripts\before-install.bat
       timeout: 300
-  AfterInstall:
-    - location: scripts\after-install.ps1
-      timeout: 300
-  ApplicationStart:
-    - location: scripts\application-start.ps1
-      timeout: 300
+ 

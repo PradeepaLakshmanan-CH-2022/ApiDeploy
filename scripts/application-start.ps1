@@ -1,6 +1,3 @@
-# Change to the application directory
-Set-Location -Path "C:\WebApiFolder\PipelineTesting"
-
-# Start the API application
-$apiCommand = "dotnet PipelineTesting.dll"
-Start-Process -FilePath "dotnet" -ArgumentList $apiCommand -NoNewWindow -Wait
+REM Install Internet Information Server (IIS). 
+c:\Windows\Sysnative\WindowsPowerShell\v1.0\powershell.exe -Command Import-Module -Name ServerManager
+c:\Windows\Sysnative\WindowsPowerShell\v1.0\powershell.exe -Command Install-WindowsFeature Web-Server
