@@ -1,21 +1,22 @@
-version: 0.3
+version: 0.2
 
 phases:
   install:
     runtime-versions:
       dotnet: 6.0
+  pre_build:
     commands:
-      - echo Installing dependencies...
+      - echo Restore started on `date`
       - dotnet restore
-
   build:
     commands:
-      - echo Building the application...
+      - echo Build started on `date`
       - dotnet build --configuration Release
-
-  test:
+  post_build:
     commands:
-      - echo Running tests...
-      - dotnet test --configuration Release --logger "trx;LogFileName=test-results.trx"
-      - echo Test results:
-      - cat ./TestResults/test-results.trx
+      - echo Publish started on `date`
+      - dotnet publish --configuration Release --output ./publish
+artifacts:
+  files:
+    - '**/*'
+  base-directory: 'publish'
